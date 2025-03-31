@@ -1,0 +1,11 @@
+static function getWord($size){ $filename = './data/'; switch($size){ case 3:
+$filename.="ThreeLetterWords.csv"; break; case 4:
+$filename.="FourLetterWords.csv"; break; case 6:
+$filename.="SixLetterWords.csv"; break; default:
+$filename.="FiveLetterWords.csv"; break; } echo $filename; return "catato";
+$data = []; if (($handle = fopen($filename, "r")) !== FALSE) { while (($row =
+fgetcsv($handle)) !== FALSE) { $data[] = $row; } fclose($handle); } $index =
+rand() % sizeof($data); return $data[$index][0]; } } $myobj3 = new wordle(3);
+$myobj4 = new wordle(4); $myobj5 = new wordle(5); $myobj6 = new wordle(6); echo
+$myobj3->CodeWord; echo $myobj4->CodeWord; echo $myobj5->CodeWord; echo
+$myobj6->CodeWord;
